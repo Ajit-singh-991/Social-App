@@ -1,0 +1,19 @@
+import 'package:social_app/presentation/home_page/home_page.dart';import 'package:social_app/widgets/app_bar/custom_app_bar.dart';import 'package:social_app/widgets/app_bar/appbar_leading_image.dart';import 'package:social_app/widgets/app_bar/appbar_subtitle_one.dart';import 'widgets/notification_item_widget.dart';import 'models/notification_item_model.dart';import 'package:social_app/widgets/custom_bottom_bar.dart';import 'package:flutter/material.dart';import 'package:social_app/core/app_export.dart';import 'controller/notification_controller.dart';class NotificationScreen extends GetWidget<NotificationController> {const NotificationScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(), body: SizedBox(height: 626.v, width: double.maxFinite, child: Stack(alignment: Alignment.topCenter, children: [_buildNotification(), _buildToday()])), bottomNavigationBar: _buildBottomBar())); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(height: 27.v, leadingWidth: 40.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgArrowLeftOnerrorcontainer, margin: EdgeInsets.only(left: 16.h, top: 1.v, bottom: 1.v), onTap: () {onTapArrowLeft();}), title: AppbarSubtitleOne(text: "lbl_notifications".tr, margin: EdgeInsets.only(left: 15.h))); } 
+/// Section Widget
+Widget _buildNotification() { return Align(alignment: Alignment.topCenter, child: Padding(padding: EdgeInsets.only(left: 16.h), child: Obx(() => ListView.separated(physics: NeverScrollableScrollPhysics(), shrinkWrap: true, separatorBuilder: (context, index) {return SizedBox(height: 1.v);}, itemCount: controller.notificationModelObj.value.notificationItemList.value.length, itemBuilder: (context, index) {NotificationItemModel model = controller.notificationModelObj.value.notificationItemList.value[index]; return NotificationItemWidget(model);})))); } 
+/// Section Widget
+Widget _buildToday() { return Align(alignment: Alignment.topCenter, child: Padding(padding: EdgeInsets.only(left: 16.h, top: 35.v, right: 16.h), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [Text("lbl_today".tr, style: CustomTextStyles.titleMediumSemiBold_1), SizedBox(height: 13.v), Row(children: [CustomImageView(imagePath: ImageConstant.imgEllipse133, height: 48.adaptSize, width: 48.adaptSize, radius: BorderRadius.circular(24.h)), Container(width: 199.h, margin: EdgeInsets.only(left: 15.h, top: 4.v), child: RichText(text: TextSpan(children: [TextSpan(text: "lbl_aniket_thakur".tr, style: CustomTextStyles.titleMediumff171717_1), TextSpan(text: " "), TextSpan(text: "msg_liked_your_post".tr, style: CustomTextStyles.bodyLargeff171717), TextSpan(text: "lbl_1hr_ago".tr, style: CustomTextStyles.bodyLargeff95a4b7)]), textAlign: TextAlign.left)), Spacer(), CustomImageView(imagePath: ImageConstant.imgMaskGroup, height: 48.adaptSize, width: 48.adaptSize)]), SizedBox(height: 30.v), Text("lbl_last_7_days".tr, style: CustomTextStyles.titleMediumSemiBold_1)]))); } 
+/// Section Widget
+Widget _buildBottomBar() { return CustomBottomBar(onChanged: (BottomBarEnum type) {Get.toNamed(getCurrentRoute(type), id: 1);}); } 
+///Handling route based on bottom click actions
+String getCurrentRoute(BottomBarEnum type) { switch (type) {case BottomBarEnum.Home: return AppRoutes.homePage; case BottomBarEnum.Search: return "/"; case BottomBarEnum.Message: return "/"; case BottomBarEnum.Feeds: return "/"; case BottomBarEnum.Profile: return "/"; default: return "/";} } 
+///Handling page based on route
+Widget getCurrentPage(String currentRoute) { switch (currentRoute) {case AppRoutes.homePage: return HomePage(); default: return DefaultWidget();} } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+ }

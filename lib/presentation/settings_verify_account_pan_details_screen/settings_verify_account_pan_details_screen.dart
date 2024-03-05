@@ -1,0 +1,15 @@
+import 'package:social_app/widgets/custom_text_form_field.dart';import 'package:social_app/widgets/app_bar/custom_app_bar.dart';import 'package:social_app/widgets/app_bar/appbar_leading_image.dart';import 'package:social_app/widgets/app_bar/appbar_subtitle_seven.dart';import 'package:flutter/material.dart';import 'package:social_app/core/app_export.dart';import 'controller/settings_verify_account_pan_details_controller.dart';class SettingsVerifyAccountPanDetailsScreen extends GetWidget<SettingsVerifyAccountPanDetailsController> {const SettingsVerifyAccountPanDetailsScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(resizeToAvoidBottomInset: false, body: SizedBox(width: double.maxFinite, child: Column(children: [_buildFullName(), _buildInputField2()])))); } 
+/// Section Widget
+Widget _buildInputField() { return Align(alignment: Alignment.topLeft, child: Padding(padding: EdgeInsets.only(top: 75.v, right: 16.h), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [Text("lbl_full_name".tr, style: theme.textTheme.titleSmall), SizedBox(height: 6.v), CustomTextFormField(controller: controller.fullNameController, hintText: "lbl_naveen_verma2".tr, hintStyle: CustomTextStyles.titleMediumBluegray300)]))); } 
+/// Section Widget
+Widget _buildInputField1() { return Align(alignment: Alignment.bottomLeft, child: Padding(padding: EdgeInsets.only(right: 16.h, bottom: 11.v), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [Text("lbl_pan_number".tr, style: theme.textTheme.titleSmall), SizedBox(height: 6.v), CustomTextFormField(controller: controller.weightController, hintText: "lbl_amapv8100g".tr, hintStyle: CustomTextStyles.titleMediumBluegray300, textInputAction: TextInputAction.done)]))); } 
+/// Section Widget
+Widget _buildFullName() { return SizedBox(height: 252.v, width: 359.h, child: Stack(alignment: Alignment.topLeft, children: [CustomImageView(imagePath: ImageConstant.imgAccent70, height: 252.v, width: 154.h, alignment: Alignment.centerRight), _buildInputField(), _buildInputField1(), CustomAppBar(leadingWidth: 40.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgArrowLeftOnerrorcontainer, margin: EdgeInsets.only(left: 16.h), onTap: () {onTapArrowLeft();}), centerTitle: true, title: AppbarSubtitleSeven(text: "lbl_pan_details".tr))])); } 
+/// Section Widget
+Widget _buildInputField2() { return Container(padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 3.v), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text("lbl_date_of_birth".tr, style: theme.textTheme.titleSmall), SizedBox(height: 6.v), Container(padding: EdgeInsets.all(14.h), decoration: AppDecoration.outlineGray.copyWith(borderRadius: BorderRadiusStyle.roundedBorder10), child: Row(children: [Text("lbl_25_11_1992".tr, style: CustomTextStyles.titleMediumBluegray300)])), SizedBox(height: 5.v)])); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+ }

@@ -1,0 +1,10 @@
+import 'package:social_app/widgets/custom_elevated_button.dart';import 'package:flutter/material.dart';import 'package:social_app/core/app_export.dart';import 'controller/settings_wallet_withdraw_successful_controller.dart';
+// ignore_for_file: must_be_immutable
+class SettingsWalletWithdrawSuccessfulBottomsheet extends StatelessWidget {SettingsWalletWithdrawSuccessfulBottomsheet(this.controller, {Key? key}) : super(key: key);
+
+SettingsWalletWithdrawSuccessfulController controller;
+
+@override Widget build(BuildContext context) { return Container(width: double.maxFinite, padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.v), decoration: AppDecoration.fillOnPrimaryContainer.copyWith(borderRadius: BorderRadiusStyle.customBorderTL24), child: Column(mainAxisSize: MainAxisSize.min, children: [Container(height: 4.v, width: 24.h, decoration: BoxDecoration(color: appTheme.gray400, borderRadius: BorderRadius.circular(2.h))), SizedBox(height: 30.v), Container(margin: EdgeInsets.symmetric(horizontal: 101.h), padding: EdgeInsets.all(24.h), decoration: AppDecoration.fillGreen.copyWith(borderRadius: BorderRadiusStyle.circleBorder70), child: Container(height: 92.adaptSize, width: 92.adaptSize, padding: EdgeInsets.all(22.h), decoration: BoxDecoration(borderRadius: BorderRadiusStyle.circleBorder46), child: CustomImageView(imagePath: ImageConstant.imgIconOnprimarycontainer, height: 48.adaptSize, width: 48.adaptSize, alignment: Alignment.center))), SizedBox(height: 22.v), Text("lbl_successfully".tr, style: CustomTextStyles.headlineSmallBold), SizedBox(height: 7.v), Container(width: 286.h, margin: EdgeInsets.symmetric(horizontal: 28.h), child: Text("msg_your_withdrawal".tr, maxLines: 2, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center, style: theme.textTheme.titleSmall)), SizedBox(height: 30.v), CustomElevatedButton(text: "lbl_back_to_home".tr, onPressed: () {onTapBackToHome();}), SizedBox(height: 46.v)])); } 
+/// Navigates to the settingsWalletOneScreen when the action is triggered.
+onTapBackToHome() { Get.toNamed(AppRoutes.settingsWalletOneScreen, ); } 
+ }

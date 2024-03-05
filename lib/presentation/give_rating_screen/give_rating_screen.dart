@@ -1,0 +1,13 @@
+import 'package:social_app/widgets/custom_rating_bar.dart';import 'package:social_app/widgets/app_bar/custom_app_bar.dart';import 'package:social_app/widgets/app_bar/appbar_leading_image.dart';import 'package:social_app/widgets/app_bar/appbar_subtitle_seven.dart';import 'package:social_app/widgets/custom_elevated_button.dart';import 'package:flutter/material.dart';import 'package:social_app/core/app_export.dart';import 'controller/give_rating_controller.dart';class GiveRatingScreen extends GetWidget<GiveRatingController> {const GiveRatingScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(body: SizedBox(width: double.maxFinite, child: Column(children: [_buildAccent(), SizedBox(height: 268.v, width: 359.h), Spacer()])), bottomNavigationBar: _buildSubmitRating())); } 
+/// Section Widget
+Widget _buildAccent() { return SizedBox(height: 268.v, width: 359.h, child: Stack(alignment: Alignment.bottomLeft, children: [CustomImageView(imagePath: ImageConstant.imgAccent33, height: 252.v, width: 154.h, alignment: Alignment.topRight), Align(alignment: Alignment.bottomLeft, child: Container(margin: EdgeInsets.only(right: 16.h), padding: EdgeInsets.symmetric(horizontal: 70.h, vertical: 20.v), decoration: AppDecoration.fillOnPrimaryContainer.copyWith(borderRadius: BorderRadiusStyle.roundedBorder20), child: Column(mainAxisSize: MainAxisSize.min, children: [CustomImageView(imagePath: ImageConstant.imgMaskGroup60x60, height: 60.adaptSize, width: 60.adaptSize), SizedBox(height: 10.v), SizedBox(width: 202.h, child: RichText(text: TextSpan(children: [TextSpan(text: "msg_how_was_your_experience2".tr, style: CustomTextStyles.bodyLargeff95a4b7), TextSpan(text: "lbl_anjali_arora".tr, style: CustomTextStyles.titleMediumff171717)]), textAlign: TextAlign.center)), SizedBox(height: 13.v), CustomRatingBar(initialRating: 0)]))), CustomAppBar(leadingWidth: 40.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgArrowLeftOnerrorcontainer, margin: EdgeInsets.only(left: 16.h), onTap: () {onTapArrowLeft();}), centerTitle: true, title: AppbarSubtitleSeven(text: "lbl_give_rating".tr))])); } 
+/// Section Widget
+Widget _buildSubmitRating() { return CustomElevatedButton(text: "lbl_submit_rating".tr, margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 54.v), onPressed: () {onTapSubmitRating();}); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+/// Navigates to the messageChatWithUserActiveScreen when the action is triggered.
+onTapSubmitRating() { Get.toNamed(AppRoutes.messageChatWithUserActiveScreen, ); } 
+ }

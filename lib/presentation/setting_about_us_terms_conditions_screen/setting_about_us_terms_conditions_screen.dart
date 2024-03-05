@@ -1,0 +1,9 @@
+import 'package:social_app/widgets/app_bar/custom_app_bar.dart';import 'package:social_app/widgets/app_bar/appbar_leading_image.dart';import 'package:flutter/material.dart';import 'package:social_app/core/app_export.dart';import 'controller/setting_about_us_terms_conditions_controller.dart';class SettingAboutUsTermsConditionsScreen extends GetWidget<SettingAboutUsTermsConditionsController> {const SettingAboutUsTermsConditionsScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(), body: SizedBox(width: SizeUtils.width, child: SingleChildScrollView(child: Container(height: 1684.v, width: 359.h, margin: EdgeInsets.only(left: 16.h, bottom: 51.v), child: Stack(alignment: Alignment.topRight, children: [Align(alignment: Alignment.bottomLeft, child: SizedBox(width: 342.h, child: Text("msg_welcome_to_your".tr, maxLines: 70, overflow: TextOverflow.ellipsis, style: CustomTextStyles.bodyMediumGray900.copyWith(height: 1.57)))), CustomImageView(imagePath: ImageConstant.imgAccent86, height: 252.v, width: 154.h, alignment: Alignment.topRight), Align(alignment: Alignment.topLeft, child: Padding(padding: EdgeInsets.only(top: 66.v), child: Text("msg_terms_and_conditions".tr, style: theme.textTheme.headlineSmall))), Align(alignment: Alignment.topLeft, child: Padding(padding: EdgeInsets.only(top: 108.v), child: Text("msg_last_updated_sep".tr, style: theme.textTheme.bodyMedium)))])))))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(leadingWidth: double.maxFinite, leading: AppbarLeadingImage(imagePath: ImageConstant.imgIcon, margin: EdgeInsets.fromLTRB(21.h, 5.v, 340.h, 5.v), onTap: () {onTapIcon();})); } 
+
+/// Navigates to the previous screen.
+onTapIcon() { Get.back(); } 
+ }

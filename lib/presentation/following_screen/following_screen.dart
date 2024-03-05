@@ -1,0 +1,15 @@
+import 'package:social_app/widgets/app_bar/custom_app_bar.dart';import 'package:social_app/widgets/app_bar/appbar_leading_image.dart';import 'package:social_app/widgets/app_bar/appbar_subtitle_seven.dart';import 'package:social_app/widgets/app_bar/appbar_subtitle_three.dart';import 'widgets/following_item_widget.dart';import 'models/following_item_model.dart';import 'package:flutter/material.dart';import 'package:social_app/core/app_export.dart';import 'controller/following_controller.dart';class FollowingScreen extends GetWidget<FollowingController> {const FollowingScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(backgroundColor: theme.colorScheme.onPrimaryContainer.withOpacity(1), appBar: _buildAppBar(), body: Container(width: double.maxFinite, padding: EdgeInsets.symmetric(vertical: 32.v), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Padding(padding: EdgeInsets.only(left: 16.h), child: Row(children: [Container(height: 52.adaptSize, width: 52.adaptSize, decoration: AppDecoration.fillBlueGray, child: CustomImageView(imagePath: ImageConstant.imgRectangle25244375x375, height: 52.adaptSize, width: 52.adaptSize, alignment: Alignment.center)), GestureDetector(onTap: () {onTapTxtWriteACaption();}, child: Padding(padding: EdgeInsets.only(left: 10.h, top: 17.v, bottom: 14.v), child: Text("msg_write_a_caption".tr, style: CustomTextStyles.titleMediumBluegray300)))])), SizedBox(height: 25.v), Divider(), SizedBox(height: 13.v), GestureDetector(onTap: () {onTapTxtAddLocation();}, child: Padding(padding: EdgeInsets.only(left: 15.h), child: Text("lbl_add_location".tr, style: CustomTextStyles.titleMediumBlack90001))), SizedBox(height: 19.v), _buildFollowing()])))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(leadingWidth: 40.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgArrowLeftOnerrorcontainer, margin: EdgeInsets.only(left: 16.h), onTap: () {onTapArrowLeft();}), centerTitle: true, title: AppbarSubtitleSeven(text: "lbl_new_post2".tr), actions: [AppbarSubtitleThree(text: "lbl_share".tr, margin: EdgeInsets.fromLTRB(16.h, 2.v, 16.h, 1.v))]); } 
+/// Section Widget
+Widget _buildFollowing() { return Expanded(child: Obx(() => GridView.builder(shrinkWrap: true, gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(mainAxisExtent: 33.v, crossAxisCount: 3, mainAxisSpacing: 10.h, crossAxisSpacing: 10.h), physics: BouncingScrollPhysics(), itemCount: controller.followingModelObj.value.followingItemList.value.length, itemBuilder: (context, index) {FollowingItemModel model = controller.followingModelObj.value.followingItemList.value[index]; return FollowingItemWidget(model);}))); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+/// Navigates to the followingOneScreen when the action is triggered.
+onTapTxtWriteACaption() { Get.toNamed(AppRoutes.followingOneScreen, ); } 
+/// Navigates to the followingThreeScreen when the action is triggered.
+onTapTxtAddLocation() { Get.toNamed(AppRoutes.followingThreeScreen, ); } 
+ }

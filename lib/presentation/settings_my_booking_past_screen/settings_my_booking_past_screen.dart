@@ -1,0 +1,15 @@
+import 'package:social_app/widgets/app_bar/custom_app_bar.dart';import 'package:social_app/widgets/app_bar/appbar_leading_image.dart';import 'package:social_app/widgets/app_bar/appbar_subtitle_seven.dart';import 'package:social_app/widgets/app_bar/appbar_trailing_iconbutton.dart';import 'widgets/settingsmybookingpast_item_widget.dart';import 'models/settingsmybookingpast_item_model.dart';import 'package:flutter/material.dart';import 'package:social_app/core/app_export.dart';import 'controller/settings_my_booking_past_controller.dart';class SettingsMyBookingPastScreen extends GetWidget<SettingsMyBookingPastController> {const SettingsMyBookingPastScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(), body: SizedBox(height: 768.v, width: double.maxFinite, child: Stack(alignment: Alignment.topCenter, children: [_buildTab(), _buildSettingsMyBookingPast()])))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(height: 48.v, leadingWidth: 40.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgArrowLeftOnerrorcontainer, margin: EdgeInsets.only(left: 16.h, top: 8.v, bottom: 8.v), onTap: () {onTapArrowLeft();}), centerTitle: true, title: AppbarSubtitleSeven(text: "lbl_my_booking".tr), actions: [AppbarTrailingIconbutton(imagePath: ImageConstant.imgBell02, margin: EdgeInsets.symmetric(horizontal: 16.h))]); } 
+/// Section Widget
+Widget _buildTab() { return Align(alignment: Alignment.topCenter, child: Container(margin: EdgeInsets.fromLTRB(16.h, 66.v, 16.h, 654.v), padding: EdgeInsets.symmetric(vertical: 14.v), decoration: AppDecoration.outlineGray.copyWith(borderRadius: BorderRadiusStyle.circleBorder23), child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [GestureDetector(onTap: () {onTapTxtUpcoming();}, child: Padding(padding: EdgeInsets.only(top: 1.v), child: Text("lbl_upcoming".tr, style: CustomTextStyles.labelLargeBluegray300Medium))), Text("lbl_past".tr, style: CustomTextStyles.labelLargeOnPrimaryContainer)]))); } 
+/// Section Widget
+Widget _buildSettingsMyBookingPast() { return Align(alignment: Alignment.topCenter, child: Padding(padding: EdgeInsets.only(left: 16.h), child: Obx(() => ListView.separated(physics: NeverScrollableScrollPhysics(), shrinkWrap: true, separatorBuilder: (context, index) {return Padding(padding: EdgeInsets.symmetric(vertical: 0.5.v), child: SizedBox(width: 343.h, child: Divider(height: 1.v, thickness: 1.v, color: appTheme.gray30001)));}, itemCount: controller.settingsMyBookingPastModelObj.value.settingsmybookingpastItemList.value.length, itemBuilder: (context, index) {SettingsmybookingpastItemModel model = controller.settingsMyBookingPastModelObj.value.settingsmybookingpastItemList.value[index]; return SettingsmybookingpastItemWidget(model);})))); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+/// Navigates to the settingsMyBookingUpcomingScreen when the action is triggered.
+onTapTxtUpcoming() { Get.toNamed(AppRoutes.settingsMyBookingUpcomingScreen, ); } 
+ }

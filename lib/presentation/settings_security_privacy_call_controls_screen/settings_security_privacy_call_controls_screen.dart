@@ -1,0 +1,15 @@
+import 'package:social_app/widgets/custom_icon_button.dart';import 'package:social_app/widgets/app_bar/custom_app_bar.dart';import 'package:social_app/widgets/app_bar/appbar_leading_image.dart';import 'package:social_app/widgets/app_bar/appbar_subtitle_seven.dart';import 'package:flutter/material.dart';import 'package:social_app/core/app_export.dart';import 'controller/settings_security_privacy_call_controls_controller.dart';class SettingsSecurityPrivacyCallControlsScreen extends GetWidget<SettingsSecurityPrivacyCallControlsController> {const SettingsSecurityPrivacyCallControlsScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(), body: SizedBox(height: 768.v, width: double.maxFinite, child: Stack(alignment: Alignment.topCenter, children: [CustomImageView(imagePath: ImageConstant.imgAccent77, height: 252.v, width: 154.h, alignment: Alignment.topRight), _buildSetAvailability1()])))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(leadingWidth: 40.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgArrowLeftOnerrorcontainer, margin: EdgeInsets.only(left: 16.h), onTap: () {onTapArrowLeft();}), centerTitle: true, title: AppbarSubtitleSeven(text: "lbl_call_controls".tr)); } 
+/// Section Widget
+Widget _buildSetAvailability1() { return Align(alignment: Alignment.topCenter, child: Container(margin: EdgeInsets.only(left: 16.h, top: 71.v, right: 16.h), decoration: AppDecoration.fillOnPrimaryContainer.copyWith(borderRadius: BorderRadiusStyle.roundedBorder20), child: Column(mainAxisSize: MainAxisSize.min, children: [_buildCalendar(setPricing: "msg_set_availability".tr, onTapCalendar: () {onTapSetAvailability();}), _buildCalendar(setPricing: "lbl_set_pricing".tr)]))); } 
+/// Common widget
+Widget _buildCalendar({required String setPricing, Function? onTapCalendar, }) { return GestureDetector(onTap: () {onTapCalendar!.call();}, child: Container(padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 16.v), decoration: AppDecoration.fillOnPrimaryContainer.copyWith(borderRadius: BorderRadiusStyle.customBorderBL20), child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [CustomIconButton(height: 44.adaptSize, width: 44.adaptSize, padding: EdgeInsets.all(10.h), decoration: IconButtonStyleHelper.fillDeepPurple, child: CustomImageView(imagePath: ImageConstant.imgCalendarDeepPurple300)), Padding(padding: EdgeInsets.only(left: 15.h, top: 13.v, bottom: 10.v), child: Text(setPricing, style: theme.textTheme.titleMedium!.copyWith(color: appTheme.gray900))), Spacer(), CustomImageView(imagePath: ImageConstant.imgArrowRightGray900, height: 24.adaptSize, width: 24.adaptSize, margin: EdgeInsets.symmetric(vertical: 10.v))]))); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+/// Navigates to the settingsSecurityPrivacyCallControlsSetAvailabScreen when the action is triggered.
+onTapSetAvailability() { Get.toNamed(AppRoutes.settingsSecurityPrivacyCallControlsSetAvailabScreen, ); } 
+ }
